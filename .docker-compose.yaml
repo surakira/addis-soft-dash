@@ -1,0 +1,30 @@
+version: "3.8"
+services:
+  mongodb:
+    image: "mongo"
+    volumes:
+     - data:/data/db
+  backend:
+    build: ./backend
+    ports:
+     - "4000:4000"
+    volumes:
+      - logs:/server/logs
+      - ./backend:/server
+      - /app/node_modules
+      
+    depends_on:
+      - mongodb
+ 
+  frontend:
+    build: C:\Users\surarozi\Documents\my app\react\react-reactapp\
+    ports:
+      - "3000:3000" 
+    volumes:
+      - C:\Users\surarozi\Documents\my app\react\react-reactapp\:\app\src
+    stdin_open: true
+    tty: true
+volumes:
+  data:
+  logs:    
+
